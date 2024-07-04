@@ -196,7 +196,7 @@ def generate_frames_web(path_x):
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     session.clear()
-    return render_template('bet.html')
+    return render_template('better.html')
 
 @app.route("/webcam", methods=['GET', 'POST'])
 def webcam():
@@ -237,6 +237,7 @@ def webapp():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # port = int(os.environ.get('PORT', 5000))
+    # app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
 

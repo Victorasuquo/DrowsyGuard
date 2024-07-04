@@ -1,4 +1,5 @@
 ultralytics
+omegaconf
 roboflow==1.1.28
 uvicorn==0.27.1
 gunicorn==22.0.0
