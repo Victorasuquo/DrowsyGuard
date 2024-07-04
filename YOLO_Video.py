@@ -75,8 +75,8 @@ def video_detection(path_x):
         yield img
         # out.write(img)
         # cv2.imshow("image", img)
-        # if cv2.waitKey(1) & 0xFF==ord('1'):
-            # break
-    # out.release()
-cv2.destroyAllWindows()
+        if cv2.waitKey(1) & 0xFF==ord('1'):
+            break
+    cap.release()
+    cv2.destroyAllWindows()
 
