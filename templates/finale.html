@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DrowsyGuard - Video Upload and Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Use your background image here */
+            background-size: cover;
+            background-position: center;
+            color: #24374f;
+            min-height: 100vh; /* Ensure body fills the screen height */
+            display: flex;
+            flex-direction: column; /* Align main content to top */
+        }
+
+        header {
+            background-color: rgba(36, 55, 79, 0.9);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed; /* Fix header to top */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px auto; /* Center the main section horizontally */
+            max-width: 900px; /* Optional: Limit width for better layout */
+        }
+
+        .section-title {
+            background-color: #679EE3;
+            color: #ffffff;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .section-title h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .video-container {
+            background-color: #ffffff;
+            border: 1px solid #ccc; /* Add a border */
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .upload-form {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .upload-form input[type="file"] {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #24374f;
+            width: 100%; /* Make the input field wider */
+        }
+
+        .upload-form button {
+            background-color: #679EE3;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .upload-form button:hover {
+            background-color: #1a2b3e;
+        }
+
+        @media (max-width: 768px) {
+            .video-container, .upload-form {
+                width: 90%;
+            }
+
+            main {
+                margin: 0; /* Remove default margin on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>DrowsyGuard</h1>
+</header>
+
+<main>
+    <section class="section-title">
+        <h1>Output Video</h1>
+    </section>
+
+    <div class="video-container">
+        <img src="{{ url_for('video') }}" alt="Uploaded Video">
+    </div>
+
+    <section class="upload-form">
+        <h2>Upload Video</h2> <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.file(class_="form-control-file", id="videoFile") }}
+            </div>
+            <button type="submit" name="favorite" value="x" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>
+            <!-- Add your footer content here. Maybe a link to your website, copyright notice, etc. -->
+            Copyright © 2023 Your Company Name.
+        </p>
+    </footer>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
